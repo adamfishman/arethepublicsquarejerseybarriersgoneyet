@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<title>Random Diner Breakfast Generator</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="500">
+
+</canvas>
+
+<script>
+	window.onload = function() {
+		
+		
+		/** context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height); 
+		
+		img	Specifies the image, canvas, or video element to use	 
+		sx	Optional. The x coordinate where to start clipping	
+		sy	Optional. The y coordinate where to start clipping	
+		swidth	Optional. The width of the clipped image	
+		sheight	Optional. The height of the clipped image	
+		x	The x coordinate where to place the image on the canvas	
+		y	The y coordinate where to place the image on the canvas	
+		width	Optional. The width of the image to use (stretch or reduce the image)	
+		height	Optional. The height of the image to use (stretch or reduce the image)
+		
+		**/
+
+	  var c = document.getElementById("myCanvas");
+	  var ctx = c.getContext("2d");
+	  
+	  var plate = document.getElementById("plate");
+	  ctx.drawImage(plate, 0, 0, 500, 500);
+	  
+	  let eggOptions = ["over easy","over medium", "over hard", "scrambled", "cheesy scrambled", "basted easy", "basted medium", "basted hard", "sunny side up", "whites"];
+      let meatOptions = ["sausage patties", "bacon", "ham", "avocado"];
+      let sideOptions = ["cheddar grits", "fried potatoes", "fruit", "beans", "tomato"];
+      let breadOptions = ["white toast", "multigrain toast", "sourdough toast", "rye toast", "a biscuit", "an english muffin", "cornbread", "gluten free toast", "pancake", "no toast"];
+	  
+	  var eggChoice = eggOptions[Math.floor(Math.random() * eggOptions.length)];
+	  var meatChoice = meatOptions[Math.floor(Math.random() * meatOptions.length)];
+	  var sideChoice = sideOptions[Math.floor(Math.random() * sideOptions.length)];
+	  var breadChoice = breadOptions[Math.floor(Math.random() * breadOptions.length)];
+	  
+	  ctx.font = "20px Comic Sans MS";
+	  ctx.fillStyle = "red";
+	  ctx.textAlign = "center";
+	  
+	  
+	  ctx.fillText(eggChoice, c.width/3, c.height/3);
+	  ctx.fillText(meatChoice, c.width - c.width/3, c.height/3);
+	  ctx.fillText(sideChoice, c.width/3, c.height - c.height/3);
+	  ctx.fillText(breadChoice, c.width - c.width/3, c.height - c.height/3);
+	  
+	  
+	  var egg = document.getElementById("egg");
+	  {
+	  	let x = (475) - (egg.width);
+	  	let y = (500/2) - (egg.height);
+	  	/* ctx.drawImage(egg, 0, 0, egg.width, egg.height, x, y, 250, 196); */
+	  }
+	  
+	  /* 286 × 148 */
+	  var bread = document.getElementById("rye");
+	  {
+	  	let x = (500) - (bread.width);
+	  	let y = (450) - (bread.height);
+	  	
+	  	// TODO scale down image to 250x250 if larger?  or just do before.
+	  	/* ctx.drawImage(rye, 0, 0, bread.width, bread.height, x, y, 286, 148); */
+	  }
+	  
+	};
+	</script>
+	
+<img id="plate" src="plate.jpg" hidden="true"/>
+
+<img id="egg" src="egg.png" hidden="true"/>
+<img id="rye" src="rye_toast.png" hidden="true"/>
+
+</body>
+</html>
